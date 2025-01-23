@@ -1,0 +1,28 @@
+services:
+  country-service:
+    image: country-service
+    build:
+      context: .
+    ports:
+      - "8090:8090"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://79.174.80.223:5432/country  # Подключение к существующему контейнеру
+      SPRING_DATASOURCE_USERNAME: network
+      SPRING_DATASOURCE_PASSWORD: dreamteam777*
+      SPRING_FLYWAY_ENABLED: "true"
+      SPRING_FLYWAY_LOCATIONS: classpath:db/migration
+      SPRING_FLYWAY_BASELINE_ON_MIGRATE: "true"
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: 79.174.80.223:9092
+    networks:
+      - kafka-docker_kafka-net
+      - microservice-network
+      - teamcity_default
+
+networks:
+  kafka-docker_kafka-net:
+    external: true
+  microservice-network:
+    external: true
+  teamcity_default:
+    external: true
+

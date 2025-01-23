@@ -1,0 +1,6 @@
+app:
+  storage:
+    test:
+     bucketName: test-bucket-name
+     fileId: a78a3148-0dd9-4a18-bbd3-ed43014a0e37
+     urlFileFromStorage: https://skb44gr.storage.yandexcloud.net/a78a3148-0dd9-4a18-bbd3-ed43014a0e37
