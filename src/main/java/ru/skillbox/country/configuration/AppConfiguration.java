@@ -1,11 +1,5 @@
 package ru.skillbox.country.configuration;
 
-import com.amazonaws.SdkClientException;
-import com.amazonaws.auth.AWSStaticCredentialsProvider;
-import com.amazonaws.auth.BasicAWSCredentials;
-import com.amazonaws.client.builder.AwsClientBuilder;
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -52,24 +46,24 @@ public class AppConfiguration {
                 .build();
     }
 
-    @Bean
-    public AmazonS3 s3Client() {
-        try {
-            AmazonS3 amazonS3 = AmazonS3ClientBuilder.standard()
-                    .withEndpointConfiguration(
-                            new AwsClientBuilder.EndpointConfiguration(
-                                    "https://storage.yandexcloud.net",
-                                    "ru-central1"
-                            )
-                    ).withCredentials
-                            (new AWSStaticCredentialsProvider(
-                                    new BasicAWSCredentials(accessKeyId, accessKeySecret)))
-                    .build();
-
-            return amazonS3;
-        } catch (SdkClientException e) {
-            log.error("Ошибка создания клиента для объекта хранения AWS SDK. Причина: {}", e.getMessage());
-            throw new SdkClientException((e.getMessage()));
-        }
-    }
+//    @Bean
+//    public AmazonS3 s3Client() {
+//        try {
+//            AmazonS3 amazonS3 = AmazonS3ClientBuilder.standard()
+//                    .withEndpointConfiguration(
+//                            new AwsClientBuilder.EndpointConfiguration(
+//                                    "https://storage.yandexcloud.net",
+//                                    "ru-central1"
+//                            )
+//                    ).withCredentials
+//                            (new AWSStaticCredentialsProvider(
+//                                    new BasicAWSCredentials(accessKeyId, accessKeySecret)))
+//                    .build();
+//
+//            return amazonS3;
+//        } catch (SdkClientException e) {
+//            log.error("Ошибка создания клиента для объекта хранения AWS SDK. Причина: {}", e.getMessage());
+//            throw new SdkClientException((e.getMessage()));
+//        }
+//    }
 }

@@ -9,4 +9,5 @@ public interface CityService {
 
     List<CityDto> getCitiesByCountryId(UUID countryUUID);
 
+    void saveCitiesToBD();
 }

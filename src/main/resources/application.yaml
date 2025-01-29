@@ -58,9 +58,10 @@ app:
     country: Country
     city: City
   storage:
+    endpoint: http://localhost:9000
     bucketName: skb44gr
-    accesKeyId: YCAJEOK5hcucGv_JMFnDRdfba
-    secretKey: YCMnZVHVigHbHcMqCO4LopqQO-gacdaolsIS6mxn
+    accesKeyId: z4ZzW93f5wr1KnNeMIBa
+    secretKey: by05JaDgjAXwUVeBxrDxlCq4Pd04U6fz6bVCMKly
   kafka:
     fileDeleteTopic: "file-delete-topic"
     fileDeleteGroupId: "file-delete-group-id"

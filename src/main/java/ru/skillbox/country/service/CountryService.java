@@ -7,5 +7,6 @@ import java.util.List;
 public interface CountryService {
 
     List<CountryDto> getCountries();
+    void saveCountriesToBD();
 
 }

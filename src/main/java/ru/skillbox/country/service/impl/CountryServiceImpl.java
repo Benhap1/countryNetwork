@@ -1,5 +1,6 @@
 package ru.skillbox.country.service.impl;
 
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -28,14 +29,19 @@ public class CountryServiceImpl implements CountryService {
 
     private final CountryAndCityApiFromApiHH countryAndCityApiFromApiHHImpl;
 
+
+
+
+
     @Override
     @Transactional(readOnly = true)
     public List<CountryDto> getCountries() {
         return countryMapper.fromListCountryToListCountryDto(countryRepository.findAll());
     }
-
+    @Override
     @Transactional
-    @Scheduled(cron = "0 0 0 1 1/11 *")
+//    @Scheduled(cron = "0 0 0 1 1/11 *")
+    @SuppressWarnings("unused")
     public void saveCountriesToBD() {
         System.out.println();
         CountryAndAreasApiDto[] jsonFromApi = countryAndCityApiFromApiHHImpl.getCountryAndCitiesJSON();
@@ -59,3 +65,4 @@ public class CountryServiceImpl implements CountryService {
         log.warn("Обновление базы стран прошло успешно");
     }
 }
+
